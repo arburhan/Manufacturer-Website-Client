@@ -16,6 +16,7 @@ const SignUp = () => {
 
 
     const onSubmit = data => {
+        console.log(data)
         createUserWithEmailAndPassword(data.email, data.password);
     }
     return (
@@ -93,9 +94,9 @@ const SignUp = () => {
                         </div>
 
                         {"signInError"}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />
                     </form>
-                    <p><small>Already have an account? <Link className='text-primary' to="/login">Please Login</Link></small></p>
+                    <p><small>Already have an account? <Link className='text-accent' to="/login">Please Login</Link></small></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}

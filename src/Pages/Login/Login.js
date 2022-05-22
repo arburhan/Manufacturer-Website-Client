@@ -15,6 +15,7 @@ const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
 
     const onSubmit = data => {
+        console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
     }
     return (
@@ -76,7 +77,7 @@ const Login = () => {
                         {"signInError"}
                         <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
                     </form>
-                    <p><small>New to Power Tools? <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
+                    <p><small>New to Power Tools? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     <button
                         onClick={() => signInWithGoogle()}
