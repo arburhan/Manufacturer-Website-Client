@@ -4,3 +4,11 @@
     padding: 25px;
     border-radius: 25px;
 }
+
+.banner-text h2 {
+    font-family: 'Lemonada', cursive;
+}
+
+.details-btn {
+    border: 3px solid #db011c;
+}
