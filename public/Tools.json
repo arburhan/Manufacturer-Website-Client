@@ -1,0 +1,74 @@
+[
+    {
+        "name":"Electrical Installation",
+        "image":"https://i.ibb.co/hYqhHzD/2679-22-F-v3.png",
+        "description":"Our M18™ FORCE LOGIC™ crimpers, cutters, and knockout tools are engineered to fundamentally change the way high-force tools are used in the field. Each tool is engineered to provide you with the power and run-time you need to complete electrical installation tasks quickly and efficiently.",
+        "minimumQuantity":50,
+        "availableQuantity":100,
+        "unitPrice":1500
+    }, 
+    {
+        "name":"Site-Lights",
+        "image":"https://i.ibb.co/w7ndSf9/2367-A.png",
+        "description":"Our M18™ RADIUS™ Compact Site Light with ONE-KEY™ and Twist Lock is the most versatile light on site. It is the world’s first high output cordless site light on the market and provides light in task, area, and overhead applications. The compact LED site light offers 4,400 lumens of TRUEVIEW™ High Definition Output.",
+        "minimumQuantity":20,
+        "availableQuantity":500,
+        "unitPrice":1100
+    }, 
+    {
+        "name":"SAWZALL-Reciprocating Saws",
+        "image":"https://i.ibb.co/tZ3sFsc/2722-21-HD-D-Revised-PS.jpg",
+        "description":"The Milwaukee 2719-21 M18™ FUEL™ HACKZALL® is the fastest cutting and most powerful one-handed reciprocating saw. Utilizing a POWERSTATE™ Brushless Motor and a best in class 7/8 stroke length, the M18™ FUEL™ HACKZALL® cuts up to 50% faster than competitors. The compact, one-handed design provides superior control and the ability to make cuts in tight spaces.",
+        "minimumQuantity":20,
+        "availableQuantity":300,
+        "unitPrice":1300
+    }, 
+    {
+        "name":"Sewer and Drain Maintenance",
+        "image":"https://i.ibb.co/w7ndSf9/2367-A.png",
+        "description":"MILWAUKEE® is committed to providing drain cleaning professionals with the most portable and versatile drain cleaning solutions. Through a thorough evaluation of the job at hand  the frustrations, needs, previous limitations  MILWAUKEE® sets out to completely rethink a solution, delivering game-changing innovation. MILWAUKEE® is committed to developing solutions that improve the ability to clear and inspect from the fixture to the sewer line for drain cleaning professionals to service more calls with less hassle.",
+        "minimumQuantity":20,
+        "availableQuantity":300,
+        "unitPrice":1000
+    }, 
+    {
+        "name":"Outdoor Power Equipment",
+        "image":"https://i.ibb.co/1M8YcXL/2823-A.png",
+        "description":"M18 FUEL™ is engineered for the most demanding tradesmen in the world. Delivering unrivaled performance in a compact structure, all M18 FUEL™ products feature three MILWAUKEE® exclusive innovations — the POWERSTATE™ Brushless Motor, REDLITHIUM™ Battery Pack and REDLINK PLUS™ Intelligence Hardware and Software — that deliver unmatched power, run-time and durability. Simply put, The MILWAUKEE® M18 FUEL™ Outdoor Power Equipment delivers the best combination of power and run-time, outperforming higher voltage platforms.",
+        "minimumQuantity":25,
+        "availableQuantity":500,
+        "unitPrice":1100
+    }, 
+    {
+        "name":"Fastening",
+        "image":"https://i.ibb.co/WpzXjPJ/2960-O.png",
+        "description":"The 2864™ M18 FUEL™ w/ ONE-KEY™ High Torque 3/4” Impact Wrench with Friction Ring provides the Most Powerful, Most Compact, and the Most Repeatable Impact Wrench in the industry! The POWERSTATE™ Brushless motor delivers up to 1,200ft-lbs of fastening torque and 1500ft-lbs of nut-busting torque, providing users a cordless solution that will eliminate the need for corded Impact Wrenches. ",
+        "minimumQuantity":30,
+        "availableQuantity":400,
+        "unitPrice":1150
+    }, 
+    {
+        "name":"Metalworking",
+        "image":"https://i.ibb.co/k3v8Vt5/2981-21-C.png",
+        "description":"Our M18 FUEL™ 8” Metal Cutting Circular Saw generates 15A corded power, faster cuts than 15A corded metal circular saws, and delivers up to 120’ of cutting corrugated decking per charge. We’ve designed our M18 FUEL™ 8” Metal Cutting Circular Saw to perform in the toughest applications, combining our legendary performance and durability with the portability of the M18™ platform.",
+        "minimumQuantity":25,
+        "availableQuantity":250,
+        "unitPrice":1200
+    },
+    {
+        "name":"Sewer Drum Machine",
+        "image":"https://i.ibb.co/L0xsY5t/MXF314-1-XC-N.png",
+        "description":"Our MX FUEL™ Sewer Drum Machine with POWERTREDZ™ simplifies sewer calls by providing POWERTREDZ™ Lift Assist technology and the power to clear roots while containing the mess with a fully closed drum. POWERTREDZ™ Lift Assist technology allows you to perform one-person transportation of the machine up and down stairs as well as in and out of a service van. ",
+        "minimumQuantity":20,
+        "availableQuantity":200,
+        "unitPrice":1050
+    },
+    {
+        "name":"Batteries and Chargers",
+        "image":"https://i.ibb.co/qB8f8Q1/batteries-chargers-hero-banner-2019.jpg",
+        "description":"Our M18™ TOP-OFF™ 175W Power Supply delivers faster simultaneous power to personal devices and small electronics. Attach any M18™ battery to provide continuous power or recharge devices with (1) AC 120V outlet, (1) USB-C PD port, and (1) USB-A port. You can quickly charge up to three devices at the same time, without the barriers of speed throttling. By connecting any USB-C cable to the USB-C PD port (45W),",
+        "minimumQuantity":20,
+        "availableQuantity":200,
+        "unitPrice":1100
+    }
+]
