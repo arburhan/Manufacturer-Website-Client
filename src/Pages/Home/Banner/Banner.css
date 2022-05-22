@@ -1,0 +1,6 @@
+.banner-text {
+    background-color: hsla(0, 0%, 100%, .65);
+    width: 900px;
+    padding: 25px;
+    border-radius: 25px;
+}
