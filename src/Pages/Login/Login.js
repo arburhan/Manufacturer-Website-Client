@@ -13,11 +13,11 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
-
     const onSubmit = data => {
         console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
     }
+
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -75,14 +75,14 @@ const Login = () => {
                         </div>
 
                         {"signInError"}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
+                        {loading ? <button class="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />}
                     </form>
                     <p><small>New to Power Tools? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
-                    <button
+                    {googleLoading ? <button class="btn loading">loading</button> : <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline"
-                    >Continue with Google</button>
+                    >Continue with Google</button>}
                 </div>
             </div>
         </div >

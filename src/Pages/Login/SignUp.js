@@ -94,14 +94,14 @@ const SignUp = () => {
                         </div>
 
                         {"signInError"}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />
+                        {loading ? <button class="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />}
                     </form>
                     <p><small>Already have an account? <Link className='text-accent' to="/login">Please Login</Link></small></p>
                     <div className="divider">OR</div>
-                    <button
+                    {googleLoading ? <button class="btn loading">loading</button> : <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline"
-                    >Continue with Google</button>
+                    >Continue with Google</button>}
                 </div>
             </div>
         </div >
