@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const Login = () => {
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -17,12 +18,19 @@ const Login = () => {
         console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
     }
+    if (user || googleUser) {
+        navigate('/home');
+    }
+    let errorMessage;
+    if (error || googlEerror) {
+        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message} </p>
+    }
 
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Login</h2>
+                    <h2 className="text-center text-2xl font-bold">Log in</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-control w-full max-w-xs">
@@ -74,7 +82,7 @@ const Login = () => {
                             </label>
                         </div>
 
-                        {"signInError"}
+                        {errorMessage}
                         {loading ? <button class="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />}
                     </form>
                     <p><small>New to Power Tools? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>

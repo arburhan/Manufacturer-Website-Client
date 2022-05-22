@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
@@ -14,10 +15,17 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
 
-
     const onSubmit = data => {
         console.log(data)
         createUserWithEmailAndPassword(data.email, data.password);
+    }
+
+    if (user || googleUser) {
+        navigate('/home');
+    }
+    let errorMessage;
+    if (error || googlEerror) {
+        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message} </p>
     }
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -93,7 +101,7 @@ const SignUp = () => {
                             </label>
                         </div>
 
-                        {"signInError"}
+                        {errorMessage}
                         {loading ? <button class="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />}
                     </form>
                     <p><small>Already have an account? <Link className='text-accent' to="/login">Please Login</Link></small></p>
