@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from '../Shared/Loading/Loading';
 import Banner from './Banner/Banner';
-import BusinessSummeryCounter from './BusinessSummeryCounter';
+import BusinessSummery from './BusinessSummery';
 import Tools from './Tools';
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Tools></Tools>
-            <BusinessSummeryCounter></BusinessSummeryCounter>
+            <BusinessSummery></BusinessSummery>
 
         </div>
     );

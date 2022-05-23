@@ -10,7 +10,7 @@ const Tools = () => {
     }, [])
     console.log(tools)
     return (
-        <div className='my-12 container mx-auto'>
+        <div className='my-12 container mx-auto px-7'>
             <h2 className="text-3xl text-center text-[#0f172a] font-bold"> <span className='underline underline-offset-4' >Tools</span> </h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' >
                 {
