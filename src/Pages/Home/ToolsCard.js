@@ -6,8 +6,8 @@ const ToolsCard = ({ tool }) => {
         <div className="card bg-base-100 shadow-md hover:shadow-2xl">
             <div className="hero-content ">
                 <div className="max-w-md">
-                    <figure class="px-10 pt-5">
-                        <img style={{ height: '225px', width: '338px' }} src={image} alt="power machine" class="rounded-xl" />
+                    <figure className="px-10 pt-5">
+                        <img style={{ height: '225px', width: '338px' }} src={image} alt="power machine" className="rounded-xl" />
                     </figure>
                     <h1 className="text-2xl font-bold mt-3 text-center">{name}</h1>
                     <p className="pt-2 text-[15px]" title={description}>{description.length > 130 ? description.slice(0, 120) + '...' : description} </p>

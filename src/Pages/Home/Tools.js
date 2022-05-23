@@ -14,7 +14,7 @@ const Tools = () => {
             <h2 className="text-3xl text-center text-[#0f172a] font-bold"> <span className='underline underline-offset-4' >Tools</span> </h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' >
                 {
-                    tools.slice(0, 6).map(tool => <ToolsCard tool={tool} ></ToolsCard>)
+                    tools.slice(0, 6).map(tool => <ToolsCard key={tool._id} tool={tool} ></ToolsCard>)
                 }
             </div>
         </div>
