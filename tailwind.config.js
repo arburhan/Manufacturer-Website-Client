@@ -6,7 +6,7 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        doctortheme: {
+        powertheme: {
           primary: "#6419E6",
           secondary: "#D926A9",
           accent: "#1FB2A6",
