@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         signInWithEmailAndPassword,
@@ -14,13 +16,17 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
+    const [token] = useToken(user || googleUser);
     const onSubmit = data => {
         console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
     }
-    if (user || googleUser) {
-        navigate('/home');
-    }
+    let from = location.state?.from?.pathname || "/";
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
     let errorMessage;
     if (error || googlEerror) {
         errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message} </p>
