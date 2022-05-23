@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ToolsCard = ({ tool }) => {
-    const { name, image, description, minimumQuantity, availableQuantity, unitPrice } = tool;
+    const { _id, name, image, description, minimumQuantity, availableQuantity, unitPrice } = tool;
+    const naviget = useNavigate();
+    const handleOrder = (id) => {
+        naviget(`/purchase/${id}`);
+    }
+
     return (
         <div className="card bg-base-100 shadow-md hover:shadow-2xl">
             <div className="hero-content ">
@@ -16,7 +22,7 @@ const ToolsCard = ({ tool }) => {
                     <p className='my-1 text-[17px]'>Minimum Order: <span className='text-secondary'> {minimumQuantity} pcs</span> </p>
 
                     <div className='text-center'>
-                        <button className="btn btn-accent text-white my-2 ">Order Now</button>
+                        <button onClick={() => { handleOrder(_id) }} className="btn btn-accent text-white my-2 ">Order Now</button>
                     </div>
                 </div>
             </div>
