@@ -14,8 +14,8 @@ const AllCategory = () => {
                     <h3 className="text-xl my-2 underline underline-offset-4">Category</h3>
                     <h2 className="text-4xl  text-[#0f172a] font-bold px-22">Category of our tools</h2>
                 </div>
-                <div className='grid justify-items-center md:grid-cols-3 my-4 md:my-12 gap-4' >
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                <div className='grid justify-items-center md:grid-cols-3 my-4 md:my-12 gap-6' >
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={accessories} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
@@ -23,7 +23,7 @@ const AllCategory = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={combo} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
@@ -31,7 +31,7 @@ const AllCategory = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={concrete} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
@@ -39,7 +39,7 @@ const AllCategory = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={drill} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
@@ -47,7 +47,7 @@ const AllCategory = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={mowers} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
@@ -55,7 +55,7 @@ const AllCategory = () => {
                             </h2>
                         </div>
                     </div>
-                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card rounded-[15px] w-80 md:w-96 bg-[#3d4451] text-white  ">
                         <figure><img src={ope} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title justify-center">
