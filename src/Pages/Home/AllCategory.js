@@ -15,50 +15,50 @@ const AllCategory = () => {
                     <h2 className="text-4xl  text-[#0f172a] font-bold px-22">Category of our tools</h2>
                 </div>
                 <div className='grid justify-items-center md:grid-cols-3 my-4 md:my-12 gap-4' >
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={accessories} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Accessories
                             </h2>
                         </div>
                     </div>
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={combo} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Combo Kits
                             </h2>
                         </div>
                     </div>
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={concrete} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Concrete & Masonry
                             </h2>
                         </div>
                     </div>
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={drill} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Drill & Fastening
                             </h2>
                         </div>
                     </div>
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={mowers} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Lawn Mowers
                             </h2>
                         </div>
                     </div>
-                    <div class="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
+                    <div className="card  w-80 md:w-96 bg-[#3d4451] text-white shadow-xl">
                         <figure><img src={ope} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title justify-center">
+                        <div className="card-body">
+                            <h2 className="card-title justify-center">
                                 Outdoor Power Equipment
                             </h2>
                         </div>
