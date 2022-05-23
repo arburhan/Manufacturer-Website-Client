@@ -11,7 +11,7 @@ const AllCategory = () => {
         <div>
             <div className='container mx-auto px-12  md:px-0 lg:px-0 py-12' >
                 <div className='text-center mx-22'>
-                    <h3 className="text-xl my-2">Category</h3>
+                    <h3 className="text-xl my-2 underline underline-offset-4">Category</h3>
                     <h2 className="text-4xl  text-[#0f172a] font-bold px-22">Category of our tools</h2>
                 </div>
                 <div className='grid justify-items-center md:grid-cols-3 my-4 md:my-12 gap-4' >
