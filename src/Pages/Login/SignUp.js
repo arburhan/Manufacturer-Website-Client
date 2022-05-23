@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useToken from '../../Hooks/useToken';
 
@@ -15,19 +15,22 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
+    const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
     const [token] = useToken(user || googleUser);
 
-    const onSubmit = data => {
-        console.log(data)
-        createUserWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
     }
+    useEffect(() => {
+        if (token) {
+            navigate('/home');
+        }
+    }, [user, token, navigate])
 
-    if (token) {
-        navigate('/home');
-    }
     let errorMessage;
-    if (error || googlEerror) {
-        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message} </p>
+    if (error || googlEerror || UpdateError) {
+        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message || UpdateError?.message} </p>
     }
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -104,7 +107,7 @@ const SignUp = () => {
                         </div>
 
                         {errorMessage}
-                        {loading ? <button className="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />}
+                        {loading || updating ? <button className="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />}
                     </form>
                     <p><small>Already have an account? <Link className='text-accent' to="/login">Please Login</Link></small></p>
                     <div className="divider">OR</div>
