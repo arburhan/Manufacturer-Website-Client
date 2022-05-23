@@ -1,6 +1,5 @@
 import React from 'react';
-import './Loading.css';
-
+import './Loading.module.css';
 const Loading = () => {
     return (
         <div className='h-screen flex items-center justify-center'>
