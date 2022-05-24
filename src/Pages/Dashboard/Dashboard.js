@@ -5,9 +5,9 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content">
                 {/* <!-- Page content here --> */}
-                <h2 className="text-3xl">Dashboard</h2>
+                <h2 className="text-3xl my-3">Dashboard</h2>
                 {/* <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
                 <Outlet></Outlet>
 
