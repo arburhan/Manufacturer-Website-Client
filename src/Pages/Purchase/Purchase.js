@@ -11,7 +11,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
     const { displayName, email } = user;
     const { id } = useParams();
-    const { register, formState: { errors }, getValues, watch, handleSubmit } = useForm({ mode: "onBlur" });
+    const { register, formState: { errors }, getValues, watch, handleSubmit, reset } = useForm({ mode: "onBlur" });
 
 
     const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`http://localhost:5000/tools/${id}`)
@@ -25,7 +25,6 @@ const Purchase = () => {
     console.log(quantityWatch);
     const onSubmit = data => {
         const totalPrice = parseInt(data.quantity) * parseInt(tool.unitPrice);
-        console.log(totalPrice);
         console.log(data);
         const order = {
             productName: tool.name,
@@ -33,7 +32,6 @@ const Purchase = () => {
             quantity: data.quantity,
             totalPrice: totalPrice
         }
-
         fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
@@ -44,9 +42,22 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => {
                 refetch();
-                toast.success('Order Purchase Successfully')
+                toast.success('Order Purchase Successfully');
+                reset();
 
-            })
+            });
+
+        const valueQuantity = parseInt(data.quantity);
+        let newQuantity = parseFloat(tool.availableQuantity) - valueQuantity;
+        console.log(newQuantity);
+        const url = `http://localhost:5000/tools/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newQuantity)
+        });
     };
 
 
@@ -148,7 +159,7 @@ const Purchase = () => {
                             </div>
                             <h2 className="xl font-bold pb-2">Total Price: $  {(tool?.unitPrice) * (getValues('quantity') ? getValues('quantity') : 0)} </h2>
                             <div className='text-center'>
-                                <input className='btn w-full max-w-xs text-white' type="submit" value="Complete Purchase" />
+                                <input disabled={true ? (getValues('quantity') < tool.minimumQuantity) || (getValues('quantity') > tool.availableQuantity) : false} id='submitButton' className='btn w-full max-w-xs text-white' type="submit" value="Complete Purchase" />
                             </div>
                         </form>
                     </div>
