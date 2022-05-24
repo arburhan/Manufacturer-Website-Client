@@ -14,6 +14,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Purchase from './Pages/Purchase/Purchase';
+import NotFound from './Pages/Shared/NotFound';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='addreview' element={<AddReview></AddReview>} ></Route>
           <Route path='myprofile' element={<MyProfile></MyProfile>} ></Route>
         </Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
