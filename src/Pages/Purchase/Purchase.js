@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
     const { displayName, email } = user;
     const { id } = useParams();
-    const [tool, setTool] = useState([]);
-    const { _id, name, image, description, minimumQuantity, availableQuantity, unitPrice } = tool;
-    useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
-            .then(res => res.json())
-            .then(data => setTool(data))
-    }, [id]);
-    const { register, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
+    const { register, formState: { errors }, getValues, watch, handleSubmit } = useForm({ mode: "onBlur" });
+
+
+    const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`http://localhost:5000/tools/${id}`)
+        .then(res => res.json())
+        // .then(data => console.log(data))
+    )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    // const watchShowQuantity = watch("quantity", tool?.minQuantity);
+    const quantityWatch = watch('quantity', tool?.minimumQuantity);
+    console.log(quantityWatch);
     const onSubmit = data => {
+        refetch();
         console.log(data);
+        const order = {
+
+        }
     };
 
 
@@ -26,36 +37,36 @@ const Purchase = () => {
         <div className='bg-base-100 py-7 px-22' >
             <h2 className="text-2xl text-center underline underline-offset-4 font-bold my-5">Welcome to Purchase</h2>
             <div className='flex flex-col md:flex-row container mx-auto my-4' >
-                <div class="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
-                    <div class="hero-content">
-                        <div class="max-w-md">
+                <div className="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
+                    <div className="hero-content">
+                        <div className="max-w-md">
                             <figure className='py-2'>
-                                <img src={image} alt="tool" className='rounded-xl' />
+                                <img src={tool.image} alt="tool" className='rounded-xl' />
                             </figure>
-                            <h1 class="text-xl font-bold py-1">Product ID: <span className='font-normal' >{_id}</span> </h1>
-                            <h1 class="text-xl font-bold py-1">Name: <span className='font-normal' >{name}</span> </h1>
-                            <p class="py-1"> <span className='font-bold text-[17px]'>Description: </span> {description}</p>
-                            <p class="py-1"> <span className='font-bold text-[17px]'>Available Quantity: </span> {availableQuantity} pcs </p>
-                            <p class="py-1"> <span className='font-bold text-[17px]'>Minimum Orderable: </span> {minimumQuantity} pcs </p>
-                            <p class="py-1"> <span className='font-bold text-[17px]'>Unit Price: </span> ${unitPrice}</p>
+                            <h1 className="text-xl font-bold py-1">Product ID: <span className='font-normal' >{tool._id}</span> </h1>
+                            <h1 className="text-xl font-bold py-1">Name: <span className='font-normal' >{tool.name}</span> </h1>
+                            <p className="py-1"> <span className='font-bold text-[17px]'>Description: </span> {tool.description}</p>
+                            <p className="py-1"> <span className='font-bold text-[17px]'>Available Quantity: </span> {tool.availableQuantity} pcs </p>
+                            <p className="py-1"> <span className='font-bold text-[17px]'>Minimum Orderable: </span> {tool.minimumQuantity} pcs </p>
+                            <p className="py-1"> <span className='font-bold text-[17px]'>Unit Price: </span> ${tool.unitPrice}</p>
                         </div>
                     </div>
                 </div>
-                <div class="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
-                    <div class="max-w-md">
-                        <h1 class="text-xl font-bold py-1">Please Fill the form to complete orders</h1>
+                <div className="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
+                    <div className="max-w-md">
+                        <h1 className="text-xl font-bold py-1">Please Fill the form to complete orders</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Name</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
                                 </label>
-                                <input class="input input-bordered font-bold" value={displayName} disabled />
+                                <input className="input input-bordered font-bold" value={displayName} disabled />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
                                 </label>
-                                <input class="input input-bordered font-bold" value={email} disabled />
+                                <input className="input input-bordered font-bold" value={email} disabled />
                             </div>
                             <div className="form-control ">
                                 <label className="label">
@@ -77,11 +88,11 @@ const Purchase = () => {
                                     {errors?.phone?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors?.phone.message}</span>}
                                 </label>
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Address Line</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Address Line</span>
                                 </label>
-                                <input type="address" class="input input-bordered font-bold bg-white" placeholder='Exact locatoin' {...register("address", {
+                                <input type="address" className="input input-bordered font-bold bg-white" placeholder='Exact locatoin' {...register("address", {
                                     required: {
                                         value: true,
                                         message: 'Phone Number is Required'
@@ -91,22 +102,22 @@ const Purchase = () => {
                                     {errors?.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.address.message}</span>}
                                 </label>
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Quantity</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Quantity</span>
                                 </label>
-                                <input name='quantity' type="number" defaultValue={minimumQuantity} class="input input-bordered font-bold bg-white" placeholder='Quantity to order'
+                                <input name='quantity' type="number" defaultValue={tool?.minimumQuantity} className="input input-bordered font-bold bg-white" placeholder='Quantity to order'
                                     {...register("quantity", {
                                         required: {
                                             value: true,
                                             message: 'Quantity is Required'
                                         },
                                         min: {
-                                            value: minimumQuantity,
+                                            value: tool.minimumQuantity,
                                             message: 'Cannot be less than minimum quantity '
                                         },
                                         max: {
-                                            value: availableQuantity,
+                                            value: tool.availableQuantity,
                                             message: 'Cannot be greater than available quantity'
                                         }
                                     }
@@ -117,7 +128,7 @@ const Purchase = () => {
                                     {errors?.quantity?.type === 'max' && <span className="label-text-alt text-red-500">{errors?.quantity.message}</span>}
                                 </label>
                             </div>
-                            {/* <p className='pb-2'>Total: {totalPrice} </p> */}
+                            <h2 className="xl font-bold pb-2">Total Price: $  {(tool?.unitPrice) * (getValues('quantity') ? getValues('quantity') : 0)} </h2>
                             <div className='text-center'>
                                 <input className='btn w-full max-w-xs text-white' type="submit" value="Complete Purchase" />
                             </div>
