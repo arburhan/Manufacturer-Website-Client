@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 
@@ -20,15 +21,32 @@ const Purchase = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    // const watchShowQuantity = watch("quantity", tool?.minQuantity);
     const quantityWatch = watch('quantity', tool?.minimumQuantity);
     console.log(quantityWatch);
     const onSubmit = data => {
-        refetch();
+        const totalPrice = parseInt(data.quantity) * parseInt(tool.unitPrice);
+        console.log(totalPrice);
         console.log(data);
         const order = {
-
+            productName: tool.name,
+            email: data.email,
+            quantity: data.quantity,
+            totalPrice: totalPrice
         }
+
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                refetch();
+                toast.success('Order Purchase Successfully')
+
+            })
     };
 
 
