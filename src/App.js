@@ -15,7 +15,7 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Purchase from './Pages/Purchase/Purchase';
 import NotFound from './Pages/Shared/NotFound';
-import MakeAdmin from './Pages/Dashboard/AdminDB/MakeAdmin';
+import MakeAdmin from './Pages/Dashboard/AdminDB/MakeAdmin/MakeAdmin';
 
 function App() {
   return (
