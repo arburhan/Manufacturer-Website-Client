@@ -16,6 +16,7 @@ import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Purchase from './Pages/Purchase/Purchase';
 import NotFound from './Pages/Shared/NotFound';
 import MakeAdmin from './Pages/Dashboard/AdminDB/MakeAdmin/MakeAdmin';
+import ManageAllOrders from './Pages/Dashboard/AdminDB/ManageAllOrders/ManageAllOrders';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path='myprofile' element={<MyProfile></MyProfile>} ></Route>
           {/* admin */}
           <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path='manageOrders' element={<ManageAllOrders></ManageAllOrders>}></Route>
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
