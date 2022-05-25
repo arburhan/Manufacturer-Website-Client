@@ -25,10 +25,10 @@ const Purchase = () => {
     console.log(quantityWatch);
     const onSubmit = data => {
         const totalPrice = parseInt(data.quantity) * parseInt(tool.unitPrice);
-        console.log(data);
+        console.log(totalPrice);
         const order = {
             productName: tool.name,
-            email: data.email,
+            email: email,
             quantity: data.quantity,
             totalPrice: totalPrice
         }
