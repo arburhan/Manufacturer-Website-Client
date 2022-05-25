@@ -17,6 +17,7 @@ import Purchase from './Pages/Purchase/Purchase';
 import NotFound from './Pages/Shared/NotFound';
 import MakeAdmin from './Pages/Dashboard/AdminDB/MakeAdmin/MakeAdmin';
 import ManageAllOrders from './Pages/Dashboard/AdminDB/ManageAllOrders/ManageAllOrders';
+import AddProduct from './Pages/Dashboard/AdminDB/AddProduct/AddProduct';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           {/* admin */}
           <Route path='makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path='manageOrders' element={<ManageAllOrders></ManageAllOrders>}></Route>
+          <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
         </Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
