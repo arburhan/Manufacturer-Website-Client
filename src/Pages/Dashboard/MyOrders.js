@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 import MyOrderTable from './MyOrderTable';
 
 const MyOrders = () => {
-    const [orders, seOders] = useState([]);
+    // const [orders, seOders] = useState([]);
     const [user] = useAuthState(auth);
-    console.log(orders);
-    useEffect(() => {
-        fetch(`http://localhost:5000/myorders?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                seOders(data)
-            })
-    }, [user])
+    // console.log(orders);
+    const { data: orders, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+        method: 'GET',
+        headers: {
+            'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
 
     return (
         <div>
             <h2 className="text-xl">My Orders {orders.length} </h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
@@ -33,7 +38,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders?.map((order, index) => <MyOrderTable index={index} key={order._id} order={order} ></MyOrderTable>)
+                            orders?.map((order, index) => <MyOrderTable refetch={refetch} index={index} key={order._id} order={order} ></MyOrderTable>)
                         }
                     </tbody>
                 </table>

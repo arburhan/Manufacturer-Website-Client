@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyOrderTable = ({ order, index }) => {
+const MyOrderTable = ({ order, index, refetch }) => {
     const { productName, quantity, totalPrice } = order;
     return (
         <>
@@ -10,7 +10,7 @@ const MyOrderTable = ({ order, index }) => {
                 <th>{quantity}</th>
                 <th>$ {totalPrice}</th>
                 <th> <button className="btn btn-accent">Pay</button> </th>
-                <th> <button className='btn btn-secondary'>Cancel</button>  </th>
+                <th> <button className='btn btn-error'>Cancel</button>  </th>
             </tr>
 
         </>
