@@ -14,7 +14,12 @@ const Purchase = () => {
     const { register, formState: { errors }, getValues, watch, handleSubmit, reset } = useForm({ mode: "onBlur" });
 
 
-    const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`http://localhost:5000/tools/${id}`)
+    const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`http://localhost:5000/tools/${id}`, {
+        method: 'GET',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
         .then(res => res.json())
         // .then(data => console.log(data))
     )

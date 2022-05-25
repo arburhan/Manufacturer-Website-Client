@@ -1,7 +1,11 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import ToolsCard from './ToolsCard';
 
 const Tools = () => {
+    const navigate = useNavigate();
     const [tools, setTools] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/tools', {
@@ -10,8 +14,19 @@ const Tools = () => {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
-            .then(data => setTools(data))
+            .then(res => {
+                console.log('res', res);
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken');
+                    navigate('/');
+                }
+                return res.json()
+            })
+            .then(data => {
+
+                setTools(data);
+            });
     }, [])
     console.log(tools)
     return (
