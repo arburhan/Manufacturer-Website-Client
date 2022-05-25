@@ -1,12 +1,34 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 
 const AddProduct = () => {
     const [user] = useAuthState(auth);
     const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
-    const onSubmit = data => { }
+    const onSubmit = data => {
+        const tool = {
+            name: data.name,
+            description: data.description,
+
+
+        }
+
+        fetch('http://localhost:5000/review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(tool)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Order Purchase Successfully');
+                reset();
+
+            });
+    }
     return (
         <section className='px-5 md:8'>
             <h2 className="text-2xl">Add Product</h2>
@@ -72,8 +94,32 @@ const AddProduct = () => {
                                 })}
                             />
                             <label className="label">
-                                {errors.url?.type === 'required' && <span className="label-text-alt text-red-500">{errors.url.message}</span>}
-                                {errors.url?.type === 'min' && <span className="label-text-alt text-red-500">{errors.url.message}</span>}
+                                {errors.quantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
+                                {errors.quantity?.type === 'min' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
+                            </label>
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Unit Price</span>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="Per unit price"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("price", {
+                                    required: {
+                                        value: true,
+                                        message: 'Price is Required'
+                                    },
+                                    min: {
+                                        value: 1,
+                                        message: 'Minimum quantity 1'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
+                                {errors.price?.type === 'min' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
                             </label>
                         </div>
                         {/* <div className="form-control">
