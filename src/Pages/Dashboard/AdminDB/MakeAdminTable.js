@@ -22,13 +22,16 @@ const MakeAdminTable = ({ refetch, index, user }) => {
                 }
             })
     }
+    const removeUser = () => {
+        toast.error('this feature conmming soon')
+    }
     return (
         <>
             <tr>
                 <th> {index + 1} </th>
                 <th>{user.email}</th>
                 <th> {user.role === 'admin' ? 'Already Admin' : <button onClick={makeAdmin} className='btn btn-accent btn-xs' >Make Admin</button>} </th>
-                <th> <button className='btn btn-error btn-xs' >Remove User</button> </th>
+                <th> <button onClick={removeUser} className='btn btn-error btn-xs' >Remove User</button> </th>
             </tr>
 
         </>
