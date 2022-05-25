@@ -9,7 +9,7 @@ import ope from '../../Images/category/ope.png';
 const AllCategory = () => {
     return (
         <div>
-            <div className='container mx-auto px-12  md:px-0 lg:px-0 py-12' >
+            <div className='container mx-auto px-12  md:px-0 lg:px-0 py-3' >
                 <div className='text-center mx-22'>
                     <h3 className="text-xl my-2 underline underline-offset-4">Category</h3>
                     <h2 className="text-4xl  text-[#0f172a] font-bold px-22">Category of our tools</h2>
