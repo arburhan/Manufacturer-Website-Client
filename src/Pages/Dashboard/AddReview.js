@@ -6,10 +6,8 @@ import auth from '../../firebase.init';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
-    console.log(user)
     const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
     const onSubmit = data => {
-        console.log(data);
         const review = {
             name: user.displayName,
             email: user.email,
@@ -45,9 +43,9 @@ const AddReview = () => {
                             </label>
                             <input className="input input-bordered font-bold" value={user.displayName} disabled />
                         </div>
-                        <div class="form-control  py-3">
-                            <label class="label">
-                                <span class="label-text">Description</span>
+                        <div className="form-control  py-3">
+                            <label className="label">
+                                <span className="label-text">Description</span>
                             </label>
                             <textarea {...register("description", {
                                 required: {
@@ -58,8 +56,8 @@ const AddReview = () => {
                                 //     value: 2055,
                                 //     message: 'Cannot be greater than 255 charecter'
                                 // }
-                            })} class="textarea textarea-bordered h-24" placeholder="Details about your review"></textarea>
-                            <label class="label">
+                            })} className="textarea textarea-bordered h-24" placeholder="Details about your review"></textarea>
+                            <label className="label">
                                 {errors?.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.description.message}</span>}
                             </label>
                         </div>

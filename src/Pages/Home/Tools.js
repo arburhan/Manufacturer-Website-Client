@@ -15,7 +15,6 @@ const Tools = () => {
             }
         })
             .then(res => {
-                console.log('res', res);
                 if (res.status === 401 || res.status === 403) {
                     signOut(auth);
                     localStorage.removeItem('accessToken');
@@ -27,8 +26,7 @@ const Tools = () => {
 
                 setTools(data);
             });
-    }, [])
-    console.log(tools)
+    }, [tools, navigate])
     return (
         <div className='my-12 container mx-auto px-7'>
             <h2 className="text-3xl text-center text-[#0f172a] font-bold"> <span className='underline underline-offset-4' >Tools</span> </h2>

@@ -8,7 +8,6 @@ import MyOrderTable from './MyOrderTable';
 const MyOrders = () => {
     // const [orders, seOders] = useState([]);
     const [user] = useAuthState(auth);
-    // console.log(orders);
     const { data: orders, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
         method: 'GET',
         headers: {

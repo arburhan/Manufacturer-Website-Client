@@ -21,7 +21,7 @@ const Reviews = () => {
             <h2 className="text-4xl underline underline-offset-2 text-center font-bold py-8">Customer Reviews</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center p-3'>
                 {
-                    reviews.slice(-3).reverse().map(review => <ReviewCard key={review._id} review={review} ></ReviewCard>)
+                    reviews?.slice(-3).reverse().map(review => <ReviewCard key={review._id} review={review} ></ReviewCard>)
                 }
             </div>
         </div>

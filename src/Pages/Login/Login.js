@@ -18,7 +18,6 @@ const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
     const [token] = useToken(user || googleUser);
     const onSubmit = data => {
-        console.log(data)
         signInWithEmailAndPassword(data.email, data.password);
     }
     let from = location.state?.from?.pathname || "/";

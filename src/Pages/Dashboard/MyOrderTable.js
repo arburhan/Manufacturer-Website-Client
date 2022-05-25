@@ -8,7 +8,6 @@ const MyOrderTable = ({ order, index, refetch }) => {
             method: 'DELETE'
         })
             .then()
-        console.log(id);
 
     }
     return (

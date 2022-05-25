@@ -21,16 +21,13 @@ const Purchase = () => {
         }
     })
         .then(res => res.json())
-        // .then(data => console.log(data))
     )
     if (isLoading) {
         return <Loading></Loading>
     }
     const quantityWatch = watch('quantity', tool?.minimumQuantity);
-    console.log(quantityWatch);
     const onSubmit = data => {
         const totalPrice = parseInt(data.quantity) * parseInt(tool.unitPrice);
-        console.log(totalPrice);
         const order = {
             productName: tool.name,
             email: email,
@@ -54,7 +51,6 @@ const Purchase = () => {
 
         const valueQuantity = parseInt(data.quantity);
         let newQuantity = parseFloat(tool.availableQuantity) - valueQuantity;
-        console.log(newQuantity);
         const url = `http://localhost:5000/tools/${id}`;
         fetch(url, {
             method: 'PUT',
