@@ -11,11 +11,14 @@ const AddProduct = () => {
         const tool = {
             name: data.name,
             description: data.description,
-
-
+            availableQuantity: data.quantity,
+            minimumQuantity: data.quantity,
+            unitPrice: data.price,
+            image: data.url
         }
+        console.log(tool);
 
-        fetch('http://localhost:5000/review', {
+        fetch('http://localhost:5000/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -24,7 +27,7 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success('Order Purchase Successfully');
+                toast.success('Product added Successfully');
                 reset();
 
             });

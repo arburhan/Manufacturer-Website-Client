@@ -16,7 +16,7 @@ const ToolsCard = ({ tool }) => {
                         <img style={{ height: '225px', width: '338px' }} src={image} alt="power machine" className="rounded-xl" />
                     </figure>
                     <h1 className="text-2xl font-bold mt-3 text-center">{name}</h1>
-                    <p className="pt-2 text-[15px]" title={description}>{description.length > 130 ? description.slice(0, 120) + '...' : description} </p>
+                    <p className="pt-2 text-[15px]" title={description}> {description.length > 130 ? description.slice(0, 120) + '...' : description} </p>
                     <p className="py-1 text-[17px]" >Available Quantity: <span className='text-secondary' >{availableQuantity}Pcs</span> </p>
                     <p className=' text-[17px]'>Unit Price: <span className='text-secondary'> ${unitPrice}</span> </p>
                     <p className='my-1 text-[17px]'>Minimum Order: <span className='text-secondary'> {minimumQuantity} pcs</span> </p>
