@@ -11,6 +11,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth);
     const { displayName, email } = user;
     const { id } = useParams();
+    // const { processing, setProcessing } = useState(false);
     const { register, formState: { errors }, getValues, watch, handleSubmit, reset } = useForm({ mode: "onBlur" });
 
 
@@ -51,14 +52,21 @@ const Purchase = () => {
 
         const valueQuantity = parseInt(data.quantity);
         let newQuantity = parseFloat(tool.availableQuantity) - valueQuantity;
-        const url = `http://localhost:5000/tools/${id}`;
-        fetch(url, {
-            method: 'PUT',
+        const updatedQuantity = {
+            _id: id,
+            availableQuantity: newQuantity
+        }
+        fetch(`http://localhost:5000/tools/${id}`, {
+            method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newQuantity)
-        });
+            body: JSON.stringify(updatedQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     };
 
 
