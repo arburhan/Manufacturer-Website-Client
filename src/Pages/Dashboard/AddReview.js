@@ -1,13 +1,34 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddReview = () => {
     const [user] = useAuthState(auth);
-    const { register, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
+    console.log(user)
+    const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
     const onSubmit = data => {
-        console.log(data)
+        console.log(data);
+        const review = {
+            name: user.displayName,
+            email: user.email,
+            description: data.description,
+            rating: data.rating
+        }
+        fetch('http://localhost:5000/review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Order Purchase Successfully');
+                reset();
+
+            });
     }
 
     return (
@@ -32,10 +53,10 @@ const AddReview = () => {
                                     value: true,
                                     message: 'Description is Required'
                                 },
-                                maxLength: {
-                                    value: 255,
-                                    message: 'Cannot be greater than 255 charecter'
-                                }
+                                // maxLength: {
+                                //     value: 2055,
+                                //     message: 'Cannot be greater than 255 charecter'
+                                // }
                             })} class="textarea textarea-bordered h-24" placeholder="Details about your review"></textarea>
                             <label class="label">
                                 {errors?.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.description.message}</span>}
@@ -45,7 +66,7 @@ const AddReview = () => {
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input name='rating' type="number" defaultValue={4} className="input input-bordered font-bold bg-white" placeholder='Rating'
+                            <input name='rating' type="number" step='any' defaultValue={4} className="input input-bordered font-bold bg-white" placeholder='Rating'
                                 {...register("rating", {
                                     required: {
                                         value: true,
