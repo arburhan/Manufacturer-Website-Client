@@ -14,11 +14,11 @@ const MyOrderTable = ({ order, index, refetch }) => {
         <>
             <tr>
                 <th>{index + 1}</th>
-                <th>{productName}</th>
-                <th>{quantity}</th>
-                <th>$ {totalPrice}</th>
-                <th> <button className="btn btn-accent">Pay</button> </th>
-                <th> <button onClick={() => {
+                <td>{productName}</td>
+                <td>{quantity}</td>
+                <td>$ {totalPrice}</td>
+                <td> <button className="btn btn-accent">Pay</button> </td>
+                <td> <button onClick={() => {
                     swal({
                         title: "Are you sure?",
                         text: "Once deleted, you will not be able to recover this order!",
@@ -35,7 +35,7 @@ const MyOrderTable = ({ order, index, refetch }) => {
                                 swal("Your imaginary file is safe!");
                             }
                         })
-                }} className='btn btn-error'>Cancel</button>  </th>
+                }} className='btn btn-error'>Cancel</button>  </td>
             </tr>
 
         </>

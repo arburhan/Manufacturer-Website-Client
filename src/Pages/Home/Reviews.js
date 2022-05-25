@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading/Loading';
 import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
-    const { data: reviews, isLoading, refetch } = useQuery(['review'], () => fetch(`http://localhost:5000/reviews`, {
+    const { data: reviews, isLoading } = useQuery(['review'], () => fetch(`http://localhost:5000/reviews`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

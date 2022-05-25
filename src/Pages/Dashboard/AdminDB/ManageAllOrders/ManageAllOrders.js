@@ -1,4 +1,5 @@
 import React from 'react';
+import ManageOrderTable from './ManageOrderTable';
 
 const ManageAllOrders = () => {
     return (
@@ -18,7 +19,7 @@ const ManageAllOrders = () => {
                     </thead>
                     <tbody>
                         {/* {
-                            users?.map((user, index) => <MakeAdminTable refetch={refetch} index={index} key={user._id} user={user} ></MakeAdminTable>)
+                            users?.map((user, index) => <ManageOrderTable refetch={refetch} index={index} key={user._id} user={user} ></ManageOrderTable>)
                         } */}
                     </tbody>
                 </table>

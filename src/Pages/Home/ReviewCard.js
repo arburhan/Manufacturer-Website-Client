@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Image from '../../Images/Image.jpg';
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, refetch }) => {
     const [user] = useAuthState(auth);
     const { name, description, rating, image } = review;
     return (

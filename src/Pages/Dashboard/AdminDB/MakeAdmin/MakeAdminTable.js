@@ -29,9 +29,9 @@ const MakeAdminTable = ({ refetch, index, user }) => {
         <>
             <tr>
                 <th> {index + 1} </th>
-                <th>{user.email}</th>
-                <th> {user.role === 'admin' ? 'Already Admin' : <button onClick={makeAdmin} className='btn btn-accent btn-xs' >Make Admin</button>} </th>
-                <th> <button onClick={removeUser} className='btn btn-error btn-xs' >Remove User</button> </th>
+                <td>{user.email}</td>
+                <td> {user.role === 'admin' ? 'Already Admin' : <button onClick={makeAdmin} className='btn btn-accent btn-xs' >Make Admin</button>} </td>
+                <td> <button onClick={removeUser} className='btn btn-error btn-xs' >Remove User</button> </td>
             </tr>
 
         </>
