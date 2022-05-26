@@ -11,7 +11,7 @@ const MyOrders = () => {
     const { data: orders, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
         method: 'GET',
         headers: {
-            'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
     if (isLoading) {
