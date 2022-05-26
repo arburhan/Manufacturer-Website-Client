@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import CommonImage from '../../Images/Image.jpg';
+import { toast } from 'react-toastify';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
@@ -18,11 +19,34 @@ const MyProfile = () => {
             'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
-    // console.log(profile);
+    console.log(profile);
     if (isLoading) {
         return <Loading></Loading>
     }
     const onSubmit = data => {
+        // console.log('user data: ', data)
+        const user = {
+            alternativeEmail: data.email,
+            education: data.education,
+            name: data.name,
+            phone: data.phone,
+            linkedIn: data.url,
+            location: data.location
+        }
+        fetch(`http://localhost:5000/myprofile/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                reset();
+                refetch();
+                toast.success('Profile Update Successfull');
+            })
 
     }
     return (
@@ -33,8 +57,17 @@ const MyProfile = () => {
                     <figure>
                         <img className='w-28 rounded-full' src={user.photoURL === null ? CommonImage : user.photoURL} alt="" />
                     </figure>
-                    <h3 className="text-xl">Name: {user.displayName}</h3>
-                    <p>Email: {user.email}</p>
+                    <h3 className="text-xl py-2">Name: {!profile.name ? user.displayName : profile.name}</h3>
+                    <p className='border-b-2'> <span className='font-bold'> Email:</span> {user.email}</p>
+                    {
+                        profile.alternativeEmail && <div>
+                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>
+                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Education:</span>  {profile.education}</h3>
+                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Address:</span>  {profile.address}</h3>
+                            <h3 className='border-b-2 2-b-2'>  <span className='font-bold'>LinkedIn Profile:</span> {profile.linkedIn}</h3>
+                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Mobile Number: </span> {profile.phone}</h3>
+                        </div>
+                    }
                 </div>
             </div>
             <div className='flex justify-center md:mb-8'>
@@ -136,8 +169,27 @@ const MyProfile = () => {
                                 {errors.phone?.type === 'required' && <span className="label-text-alt text-red-500">{errors.phone.message}</span>}
                             </label>
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Location</span>
+                            </label>
+                            <input
+                                type="address"
+                                placeholder="Location"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("location", {
+                                    required: {
+                                        value: true,
+                                        message: 'Location is Required'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.location?.type === 'required' && <span className="label-text-alt text-red-500">{errors.location.message}</span>}
+                            </label>
+                        </div>
                         <div className='text-center'>
-                            <input className='btn btn-accent btn-wide' type="submit" value="Add Review" />
+                            <input className='btn btn-accent btn-wide' type="submit" value='update' />
                         </div>
                     </form>
                 </div>
