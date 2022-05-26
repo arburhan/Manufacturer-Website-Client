@@ -5,13 +5,6 @@ import swal from 'sweetalert';
 
 const MyOrderTable = ({ order, index, refetch }) => {
     const { _id, paid, transactionId, productName, quantity, totalPrice } = order;
-    const handleDelete = id => {
-        fetch(`http://localhost:5000/order/${id}`, {
-            method: 'DELETE'
-        })
-            .then()
-
-    }
     return (
         <>
             <tr>
