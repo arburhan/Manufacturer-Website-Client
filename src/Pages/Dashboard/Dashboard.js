@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/useAdmin';
+import Loading from '../Shared/Loading/Loading';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
