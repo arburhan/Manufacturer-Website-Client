@@ -131,11 +131,11 @@ const Purchase = () => {
                                 <input type="address" className="input input-bordered font-bold bg-white" placeholder='Exact locatoin' {...register("address", {
                                     required: {
                                         value: true,
-                                        message: 'Phone Number is Required'
+                                        message: 'Address Number is Required'
                                     }
                                 })} />
                                 <label className="label">
-                                    {errors?.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.address.message}</span>}
+                                    {errors?.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.address?.message}</span>}
                                 </label>
                             </div>
                             <div className="form-control">
