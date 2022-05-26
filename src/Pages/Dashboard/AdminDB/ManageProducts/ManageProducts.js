@@ -1,6 +1,19 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../../../Shared/Loading/Loading';
+import ManageProductsTable from './ManageProductsTable';
 
 const ManageProducts = () => {
+    const { data: tools, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/tools`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
     return (
         <div>
             <h2 className="text-2xl">Manage Products</h2>
@@ -17,9 +30,9 @@ const ManageProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
-                            users?.map((user, index) => <ManageOrderTable refetch={refetch} index={index} key={user._id} user={user} ></ManageOrderTable>)
-                        } */}
+                        {
+                            tools?.map((tool, index) => <ManageProductsTable key={tool._id} tool={tool} refetch={refetch} index={index} ></ManageProductsTable>)
+                        }
                     </tbody>
                 </table>
             </div>
