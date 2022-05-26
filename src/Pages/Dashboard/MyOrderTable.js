@@ -22,16 +22,26 @@ const MyOrderTable = ({ order, index, refetch }) => {
                 <td> <button onClick={() => {
                     swal({
                         title: "Are you sure?",
-                        text: "Once deleted, you will not be able to recover this order!",
+                        text: "Once deleted, you will not able to recover this order!",
                         icon: "warning",
                         buttons: true,
                         dangerMode: true,
                     })
                         .then((willDelete) => {
                             if (willDelete) {
-                                swal("Poof! Your imaginary file has been deleted!", {
-                                    icon: "success",
-                                });
+                                fetch(`http://localhost:5000/order/${_id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                                    }
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        swal("Your has deleted!", {
+                                            icon: "success",
+                                        });
+                                        refetch();
+                                    })
                             } else {
                                 swal("Your imaginary file is safe!");
                             }
