@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ToolsCard = ({ tool }) => {
+const ToolsCard = ({ tool, refetch }) => {
     const { _id, name, image, description, minimumQuantity, availableQuantity, unitPrice } = tool;
     const naviget = useNavigate();
     const handleOrder = (id) => {

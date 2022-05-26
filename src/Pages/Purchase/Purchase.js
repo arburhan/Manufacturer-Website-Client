@@ -50,14 +50,12 @@ const Purchase = () => {
 
             });
 
-        const valueQuantity = parseInt(data.quantity);
-        let newQuantity = parseFloat(tool.availableQuantity) - valueQuantity;
         const updatedQuantity = {
-            _id: id,
-            availableQuantity: newQuantity
+            id: id,
+            quantity: data.quantity
         }
-        fetch(`http://localhost:5000/tools/${id}`, {
-            method: 'PATCH',
+        fetch(`http://localhost:5000/tool/${tool._id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
