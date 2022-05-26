@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { email, displayName, photoURL } = user;
-    console.log(user)
     const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
 
     const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`http://localhost:5000/user/${email}`, {
@@ -19,12 +18,10 @@ const MyProfile = () => {
             'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
-    console.log(profile);
     if (isLoading) {
         return <Loading></Loading>
     }
     const onSubmit = data => {
-        // console.log('user data: ', data)
         const user = {
             alternativeEmail: data.email,
             education: data.education,
@@ -42,7 +39,6 @@ const MyProfile = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 reset();
                 refetch();
                 toast.success('Profile Update Successfull');
