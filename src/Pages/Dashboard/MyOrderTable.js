@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const MyOrderTable = ({ order, index, refetch }) => {
-    const { _id, productName, quantity, totalPrice } = order;
+    const { _id, paid, productName, quantity, totalPrice } = order;
     const handleDelete = id => {
         fetch(`http://localhost:5000/order/${id}`, {
             method: 'DELETE'
@@ -17,7 +18,7 @@ const MyOrderTable = ({ order, index, refetch }) => {
                 <td>{productName}</td>
                 <td>{quantity}</td>
                 <td>$ {totalPrice}</td>
-                <td> <button className="btn btn-accent">Pay</button> </td>
+                <td> {!paid && <Link to={`/dashboard/payment/${_id}`} className="btn btn-accent">Pay</Link>} {paid && <span className='text-success' >Paid</span>} </td>
                 <td> <button onClick={() => {
                     swal({
                         title: "Are you sure?",
