@@ -22,6 +22,7 @@ import Payment from './Pages/Dashboard/Payment';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import ManageProducts from './Pages/Dashboard/AdminDB/ManageProducts/ManageProducts';
 import ForgetPassword from './Pages/Login/ForgetPassword';
+import Portfolio from './Pages/ExtraPages/Portfolio';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/home' element={<Home></Home>} ></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='/forgetPassword' element={<ForgetPassword></ForgetPassword>}></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth>
