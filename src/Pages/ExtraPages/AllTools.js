@@ -7,7 +7,7 @@ const AllTools = () => {
     const { data: tools, isLoading, refetch } = useQuery('alltools', () => fetch(`https://shielded-sea-60001.herokuapp.com/tools`, {
         method: 'GET',
         headers: {
-            'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
+            authoraization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
     if (isLoading) {

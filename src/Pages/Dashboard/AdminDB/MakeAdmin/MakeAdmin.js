@@ -4,10 +4,10 @@ import Loading from '../../../Shared/Loading/Loading';
 import MakeAdminTable from './MakeAdminTable';
 
 const MakeAdmin = () => {
-    const { data: users, isLoading, refetch } = useQuery(['users'], () => fetch(`https://shielded-sea-60001.herokuapp.com/users`, {
+    const { data: users, isLoading, refetch } = useQuery(['usersAdmin'], () => fetch(`https://shielded-sea-60001.herokuapp.com/users`, {
         method: 'GET',
         headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     })
         .then(res => res.json())

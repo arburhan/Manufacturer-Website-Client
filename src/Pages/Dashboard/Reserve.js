@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/useAdmin';
+import Loading from '../Shared/Loading/Loading';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
     return (
-        <div>
-            <div className="drawer drawer-mobile">
-                <input id="toolDrawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content p-4">
-                    <Outlet></Outlet>
-                </div>
+        <div className="drawer drawer-mobile">
+            <input id="power-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+                {/* <!-- Page content here --> */}
+                <h2 className="text-3xl my-3">Dashboard</h2>
+                <Outlet></Outlet>
+            </div>
+            <div className='container mx-3'>
                 <div className="drawer-side">
-                    <label htmlFor="toolDrawer" className="drawer-overlay"></label>
+                    <label htmlFor="power-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 rounded-md text-base-content">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to='/dashboard'>My Profile</Link></li>
@@ -30,7 +33,6 @@ const Dashboard = () => {
                             <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
                         </>}
                     </ul>
-
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ const MyProfile = () => {
     const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`https://shielded-sea-60001.herokuapp.com/user/${user.email}`, {
         method: 'GET',
         headers: {
-            'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
+            authoraization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()))
     if (isLoading) {
@@ -62,7 +62,7 @@ const MyProfile = () => {
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile?.alternativeEmail}</h3>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Education:</span>  {profile?.education}</h3>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile?.location}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg '>  <span className='font-bold'>LinkedIn Profile:</span> {profile?.linkedIn}</h3>
+                            <p className='border-2 my-2 p-2 rounded-lg '> <span className='font-bold text-xs'>LinkedIn Profile:</span> <span className='text-xs'>{profile?.linkedIn}</span> </p>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Mobile Number: </span> {profile?.phone}</h3>
                         </div>
                     }
