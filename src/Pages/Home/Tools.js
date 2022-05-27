@@ -7,6 +7,7 @@ import Loading from '../Shared/Loading/Loading';
 import ToolsCard from './ToolsCard';
 
 const Tools = () => {
+    const navigate = useNavigate();
     const { data: tools, isLoading, refetch } = useQuery('alltools', () => fetch(`https://shielded-sea-60001.herokuapp.com/tools`, {
         method: 'GET',
         headers: {
@@ -23,6 +24,13 @@ const Tools = () => {
                 {
                     tools?.slice(-6).reverse().map(tool => <ToolsCard key={tool._id} refetch={refetch} tool={tool} ></ToolsCard>)
                 }
+            </div>
+            <div className='my-12 text-center'>
+                <button
+                    onClick={() => {
+                        navigate('/allTools');
+                    }}
+                    className="btn btn-primary text-white">Show All Products</button>
             </div>
         </div>
     );
