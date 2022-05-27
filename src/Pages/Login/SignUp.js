@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import useToken from '../../Hooks/useToken';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -16,11 +17,14 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googlEerror] = useSignInWithGoogle(auth);
     const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
+    const [sendEmailVerification, verificationError] = useSendEmailVerification(auth);
     const [token] = useToken(user || googleUser);
 
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+        toast.success('verification mail sent. please verify');
+        await sendEmailVerification(data.email);
     }
     useEffect(() => {
         if (token) {
@@ -29,8 +33,8 @@ const SignUp = () => {
     }, [user, token, navigate])
 
     let errorMessage;
-    if (error || googlEerror || UpdateError) {
-        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message || UpdateError?.message} </p>
+    if (error || googlEerror || UpdateError || verificationError) {
+        errorMessage = <p className="text-red-600 mb-3"> {error?.message || googlEerror?.message || UpdateError?.message || verificationError?.message} </p>
     }
     return (
         <div className='flex h-screen justify-center items-center'>
