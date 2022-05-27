@@ -73,7 +73,7 @@ const Purchase = () => {
     return (
         <div className='bg-base-100 py-7 px-22' >
             <h2 className="text-2xl text-center underline underline-offset-4 font-bold my-5">Welcome to Purchase</h2>
-            <div className='flex flex-col md:flex-row container mx-auto my-4' >
+            <div className='flex flex-col md:flex-row container mx-auto my-4 border-b-4 md:border-b-0' >
                 <div className="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
                     <div className="hero-content">
                         <div className="max-w-md">
@@ -89,15 +89,15 @@ const Purchase = () => {
                         </div>
                     </div>
                 </div>
-                <div className="hero hover:shadow-xl hover:bg-base-300 rounded-lg">
+                <div className="hero hover:shadow-xl hover:bg-base-300 bg-base-100 md:hover:bg-base-0 rounded-lg px-4 md:px-1 py-6 md:pt-0">
                     <div className="max-w-md">
-                        <h1 className="text-xl font-bold py-1">Please Fill the form to complete orders</h1>
+                        <h1 className="text-xl font-bold py-1 text-center">Please Fill the form to complete orders</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input className="input input-bordered font-bold" value={displayName} disabled />
+                                <input className="input input-bordered font-bold border" value={displayName} disabled />
                             </div>
                             <div className="form-control">
                                 <label className="label">

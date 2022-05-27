@@ -7,7 +7,7 @@ const ReviewCard = ({ review, refetch }) => {
     const [user] = useAuthState(auth);
     const { name, description, rating, image } = review;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-xl">
             <div className="avatar justify-center py-2">
                 <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={image === null ? Image : image} alt='review' />

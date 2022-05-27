@@ -5,7 +5,7 @@ const ContactUs = () => {
         <div className='my-12 bg-base-200 p-4 lg:p-12'>
             <h1 className="text-3xl font-bold text-center my-3">Contact</h1>
             <div className='flex flex-col md:flex-row justify-center gap-8 lg:gap-28' >
-                <div className='card w-96 p-4  hover:bg-base-300'>
+                <div className='card w-80 md:w-96 p-4  hover:bg-base-300'>
                     <div className=''>
                         <h2 className="text-2xl">Phone</h2>
                         <figure style={{ justifyContent: 'flex-start' }} className='flex items-center' >
@@ -35,7 +35,7 @@ const ContactUs = () => {
                         </figure>
                     </div>
                 </div>
-                <div className=' card w-96 p-4 hover:bg-base-300'>
+                <div className=' card w-80 md:w-96 p-4 hover:bg-base-300'>
                     <h3 className="text-xl text-center">Email us</h3>
                     <div className="form-control">
                         <label className="label">
