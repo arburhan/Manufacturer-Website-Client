@@ -62,7 +62,7 @@ const MyProfile = () => {
                         profile.alternativeEmail && <div>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Education:</span>  {profile.education}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile.address}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile.location}</h3>
                             <h3 className='border-2 my-2 p-2 rounded-lg '>  <span className='font-bold'>LinkedIn Profile:</span> {profile.linkedIn}</h3>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Mobile Number: </span> {profile.phone}</h3>
                         </div>

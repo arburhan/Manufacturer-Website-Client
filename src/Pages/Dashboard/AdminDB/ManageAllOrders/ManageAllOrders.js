@@ -1,7 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import auth from '../../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
 import ManageOrderTable from './ManageOrderTable';
 
 const ManageAllOrders = () => {
+    const [user] = useAuthState(auth);
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:5000/orders`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h2 className="text-2xl">Manage All Orders</h2>
@@ -18,9 +32,9 @@ const ManageAllOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {
-                            users?.map((user, index) => <ManageOrderTable refetch={refetch} index={index} key={user._id} user={user} ></ManageOrderTable>)
-                        } */}
+                        {
+                            allOrders?.map((allOrder, index) => <ManageOrderTable index={index} key={allOrder._id} allOrder={allOrder}></ManageOrderTable>)
+                        }
                     </tbody>
                 </table>
             </div>
