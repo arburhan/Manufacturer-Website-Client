@@ -19,7 +19,6 @@ const Payment = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    console.log(myorder)
 
     return (
         <div>

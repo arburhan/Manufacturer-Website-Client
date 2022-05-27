@@ -16,7 +16,6 @@ const AddProduct = () => {
             unitPrice: data.price,
             image: data.url
         }
-        console.log(tool);
 
         fetch('https://shielded-sea-60001.herokuapp.com/tools', {
             method: 'POST',

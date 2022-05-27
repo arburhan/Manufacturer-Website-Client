@@ -22,7 +22,6 @@ const MyProfile = () => {
         return <Loading></Loading>
     }
     const onSubmit = data => {
-        console.log(data)
         const user = {
             alternativeEmail: data.email,
             education: data.education,
