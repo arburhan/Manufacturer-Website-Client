@@ -26,6 +26,8 @@ const ManageAllOrders = () => {
                         <tr>
                             <th></th>
                             <th>Email</th>
+                            <th>Quantity</th>
+                            <th>Address</th>
                             <th>Pay Status</th>
                             <th>Shipment Status</th>
                             <th>Action</th>
@@ -33,7 +35,7 @@ const ManageAllOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            allOrders?.map((allOrder, index) => <ManageOrderTable index={index} key={allOrder._id} allOrder={allOrder}></ManageOrderTable>)
+                            allOrders?.map((allOrder, index) => <ManageOrderTable refetch={refetch} index={index} key={allOrder._id} allOrder={allOrder}></ManageOrderTable>)
                         }
                     </tbody>
                 </table>

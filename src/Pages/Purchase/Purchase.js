@@ -33,7 +33,8 @@ const Purchase = () => {
             productName: tool.name,
             email: email,
             quantity: data.quantity,
-            totalPrice: totalPrice
+            totalPrice: totalPrice,
+            address: data.address
         }
         fetch('http://localhost:5000/order', {
             method: 'POST',
