@@ -22,6 +22,7 @@ const MyProfile = () => {
         return <Loading></Loading>
     }
     const onSubmit = data => {
+        console.log(data)
         const user = {
             alternativeEmail: data.email,
             education: data.education,
@@ -50,18 +51,20 @@ const MyProfile = () => {
             <h2 className="text-2xl">My Profile</h2>
             <div className='flex justify-center md:mb-8'>
                 <div className='w-full lg:w-6/12 md:w-full p-6 rounded-lg border-2'>
-                    <figure>
-                        <img className='w-28 rounded-full' src={user.photoURL === null ? CommonImage : user.photoURL} alt="" />
-                    </figure>
-                    <h3 className="text-xl py-2">Name: {!profile.name ? user.displayName : profile.name}</h3>
-                    <p className='border-b-2'> <span className='font-bold'> Email:</span> {user.email}</p>
+                    <div>
+                        <figure>
+                            <img className='w-28 rounded-xl' src={user.photoURL === null ? CommonImage : user.photoURL} alt="" />
+                        </figure>
+                        <h3 className="text-xl p-2 my-1">{!profile.name ? user.displayName : profile.name}</h3>
+                    </div>
+                    <p className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'> Email:</span> {user.email}</p>
                     {
                         profile.alternativeEmail && <div>
-                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>
-                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Education:</span>  {profile.education}</h3>
-                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Address:</span>  {profile.address}</h3>
-                            <h3 className='border-b-2 2-b-2'>  <span className='font-bold'>LinkedIn Profile:</span> {profile.linkedIn}</h3>
-                            <h3 className='border-b-2 2-b-2'> <span className='font-bold'>Mobile Number: </span> {profile.phone}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Education:</span>  {profile.education}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile.address}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg '>  <span className='font-bold'>LinkedIn Profile:</span> {profile.linkedIn}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Mobile Number: </span> {profile.phone}</h3>
                         </div>
                     }
                 </div>
