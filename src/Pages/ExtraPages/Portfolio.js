@@ -22,14 +22,16 @@ const Portfolio = () => {
                     <div className='py-3'>
                         <h4 className="text-xl underline">SSC</h4>
                         <p className="text-md">Science</p>
-                        <p className="text-md">Kaligram Dodangi High School<address>Manda, Naogaon</address> </p>
+                        <p className="text-md">Kaligram Dodangi High School </p>
+                        <address>Manda, Naogaon</address>
                         <p className="text-md">Passing Year: 2017</p>
 
                     </div>
                     <div>
                         <h4 className="text-xl underline">Diploma in Engineering</h4>
                         <p className="text-md"> Computer Technology</p>
-                        <p className="text-md">Rajshahi Polytechnic Institute<address>Rajshahi</address> </p>
+                        <p className="text-md">Rajshahi Polytechnic Institute</p>
+                        <address>Rajshahi</address>
                         <p className="text-md">Session: 2017-18</p>
                     </div>
                 </div>
