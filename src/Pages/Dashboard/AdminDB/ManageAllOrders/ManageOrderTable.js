@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 
 const ManageOrderTable = ({ allOrder, index, refetch }) => {
 
@@ -37,7 +38,35 @@ const ManageOrderTable = ({ allOrder, index, refetch }) => {
                             handleUpdateShip(allOrder._id)
                         }} className='btn btn-xs' > Update </button>
                     </div>} </td>
-                <td> {!allOrder.paid === true && <button className='btn btn-xs btn-error' >Cancel</button>} </td>
+                <td> {!allOrder.paid === true && <button onClick={() => {
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not able to recover this order!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                fetch(`http://localhost:5000/order/${allOrder._id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                                    }
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        swal("Order has deleted!", {
+                                            icon: "success",
+                                        });
+                                        refetch();
+                                        toast('Order deleted');
+                                    })
+                            } else {
+                                swal("Order is safe!");
+                            }
+                        })
+                }} className='btn btn-error'>Cancel</button>} </td>
             </tr>
         </>
     );

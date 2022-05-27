@@ -32,7 +32,7 @@ const MyOrderTable = ({ order, index, refetch }) => {
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            swal("Your has deleted!", {
+                                            swal("Your order has deleted!", {
                                                 icon: "success",
                                             });
                                             refetch();
