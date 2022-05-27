@@ -62,7 +62,7 @@ const Login = () => {
                                 {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                             </label>
                         </div>
-                        <div className="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs pb-2">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
@@ -82,6 +82,9 @@ const Login = () => {
                                 })}
                             />
                             <label className="label">
+                                <button onClick={() => {
+                                    navigate('/forgetPassword');
+                                }} className="label-text-alt text-primary pt-2">Forget Password?</button>
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
