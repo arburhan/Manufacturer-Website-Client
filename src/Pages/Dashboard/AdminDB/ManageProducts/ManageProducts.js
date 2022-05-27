@@ -4,7 +4,7 @@ import Loading from '../../../Shared/Loading/Loading';
 import ManageProductsTable from './ManageProductsTable';
 
 const ManageProducts = () => {
-    const { data: tools, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/tools`, {
+    const { data: tools, isLoading, refetch } = useQuery('myorders', () => fetch(`https://shielded-sea-60001.herokuapp.com/tools`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -8,7 +8,7 @@ import MyOrderTable from './MyOrderTable';
 const MyOrders = () => {
     // const [orders, seOders] = useState([]);
     const [user] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('myorders', () => fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('myorders', () => fetch(`https://shielded-sea-60001.herokuapp.com/myorders?email=${user.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

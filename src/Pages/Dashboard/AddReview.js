@@ -15,7 +15,7 @@ const AddReview = () => {
             description: data.description,
             rating: data.rating
         }
-        fetch('http://localhost:5000/review', {
+        fetch('https://shielded-sea-60001.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

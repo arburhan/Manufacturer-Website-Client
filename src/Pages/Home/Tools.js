@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading/Loading';
 import ToolsCard from './ToolsCard';
 
 const Tools = () => {
-    const { data: tools, isLoading, refetch } = useQuery('alltools', () => fetch(`http://localhost:5000/tools`, {
+    const { data: tools, isLoading, refetch } = useQuery('alltools', () => fetch(`https://shielded-sea-60001.herokuapp.com/tools`, {
         method: 'GET',
         headers: {
             'authoraization': `Bearer ${localStorage.getItem('accessToken')}`

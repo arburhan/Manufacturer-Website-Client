@@ -14,7 +14,7 @@ const CheckoutForm = ({ myorder }) => {
     const { _id, totalPrice, email, productName } = myorder;
     const { id } = useParams();
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://shielded-sea-60001.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -80,7 +80,7 @@ const CheckoutForm = ({ myorder }) => {
                 id: id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://shielded-sea-60001.herokuapp.com/order/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

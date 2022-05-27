@@ -9,7 +9,7 @@ const ManageOrderTable = ({ allOrder, index, refetch }) => {
         const shipment = {
             shipment: id
         }
-        fetch(`http://localhost:5000/shipmentOrder/${id}`, {
+        fetch(`https://shielded-sea-60001.herokuapp.com/shipmentOrder/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -48,7 +48,7 @@ const ManageOrderTable = ({ allOrder, index, refetch }) => {
                     })
                         .then((willDelete) => {
                             if (willDelete) {
-                                fetch(`http://localhost:5000/order/${allOrder._id}`, {
+                                fetch(`https://shielded-sea-60001.herokuapp.com/order/${allOrder._id}`, {
                                     method: 'DELETE',
                                     headers: {
                                         authorization: `Bearer ${localStorage.getItem('accessToken')}`

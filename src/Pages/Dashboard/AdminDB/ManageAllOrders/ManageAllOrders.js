@@ -7,7 +7,7 @@ import ManageOrderTable from './ManageOrderTable';
 
 const ManageAllOrders = () => {
     const [user] = useAuthState(auth);
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch(`http://localhost:5000/orders`, {
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch(`https://shielded-sea-60001.herokuapp.com/orders`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

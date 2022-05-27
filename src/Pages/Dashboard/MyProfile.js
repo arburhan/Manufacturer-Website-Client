@@ -12,7 +12,7 @@ const MyProfile = () => {
     const { email, displayName, photoURL } = user;
     const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
 
-    const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`http://localhost:5000/user/${email}`, {
+    const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`https://shielded-sea-60001.herokuapp.com/user/${email}`, {
         method: 'GET',
         headers: {
             'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MyProfile = () => {
             linkedIn: data.url,
             location: data.location
         }
-        fetch(`http://localhost:5000/myprofile/${email}`, {
+        fetch(`https://shielded-sea-60001.herokuapp.com/myprofile/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -53,11 +53,11 @@ const MyProfile = () => {
                 <div className='w-full lg:w-6/12 md:w-full p-6 rounded-lg border-2'>
                     <div>
                         <figure>
-                            <img className='w-28 rounded-xl' src={user.photoURL === null ? CommonImage : user.photoURL} alt="" />
+                            <img className='w-28 rounded-xl' src={user?.photoURL === null ? CommonImage : user?.photoURL} alt="" />
                         </figure>
-                        <h3 className="text-xl p-2 my-1">{!profile.name ? user.displayName : profile.name}</h3>
+                        <h3 className="text-xl p-2 my-1">{!profile?.name ? user?.displayName : profile?.name}</h3>
                     </div>
-                    <p className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'> Email:</span> {user.email}</p>
+                    <p className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'> Email:</span> {user?.email}</p>
                     {
                         profile.alternativeEmail && <div>
                             <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>

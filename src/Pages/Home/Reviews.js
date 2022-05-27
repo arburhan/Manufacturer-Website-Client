@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery(['review'], () => fetch(`http://localhost:5000/reviews`, {
+    const { data: reviews, isLoading } = useQuery(['review'], () => fetch(`https://shielded-sea-60001.herokuapp.com/reviews`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

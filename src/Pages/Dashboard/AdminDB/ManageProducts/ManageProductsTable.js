@@ -7,7 +7,7 @@ const ManageProductsTable = ({ index, tool, refetch }) => {
         toast.error('this feature added as soon as possible')
     }
     const id = tool._id;
-    // fetch(`http://localhost:5000/tool/${id}`, {
+    // fetch(`https://shielded-sea-60001.herokuapp.com/tool/${id}`, {
     //     method: 'DELETE',
     //     headers: {
     //         authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -33,7 +33,7 @@ const ManageProductsTable = ({ index, tool, refetch }) => {
                         })
                             .then((willDelete) => {
                                 if (willDelete) {
-                                    fetch(`http://localhost:5000/tool/${id}`, {
+                                    fetch(`https://shielded-sea-60001.herokuapp.com/tool/${id}`, {
                                         method: 'DELETE',
                                         headers: {
                                             authorization: `Bearer ${localStorage.getItem('accessToken')}`

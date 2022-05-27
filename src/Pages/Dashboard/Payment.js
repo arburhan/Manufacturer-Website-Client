@@ -9,7 +9,7 @@ const stripePromise = loadStripe('pk_test_51L1X0aJ4uo6umqFGEVoEth2hy2Sr4y5BcNWLu
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `http://localhost:5000/myorders/${id}`;
+    const url = `https://shielded-sea-60001.herokuapp.com/myorders/${id}`;
     const { data: myorder, isLoading } = useQuery('myorder', () => fetch(url, {
         method: 'GET',
         headers: {

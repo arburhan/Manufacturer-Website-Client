@@ -18,7 +18,7 @@ const AddProduct = () => {
         }
         console.log(tool);
 
-        fetch('http://localhost:5000/tools', {
+        fetch('https://shielded-sea-60001.herokuapp.com/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

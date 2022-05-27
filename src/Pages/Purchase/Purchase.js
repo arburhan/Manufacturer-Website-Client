@@ -15,7 +15,7 @@ const Purchase = () => {
     const { register, formState: { errors }, getValues, watch, handleSubmit, reset } = useForm({ mode: "onBlur" });
 
 
-    const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`http://localhost:5000/tools/${id}`, {
+    const { data: tool, isLoading, refetch } = useQuery(['available'], () => fetch(`https://shielded-sea-60001.herokuapp.com/tools/${id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,7 +36,7 @@ const Purchase = () => {
             totalPrice: totalPrice,
             address: data.address
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://shielded-sea-60001.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -55,7 +55,7 @@ const Purchase = () => {
             id: id,
             quantity: data.quantity
         }
-        fetch(`http://localhost:5000/tool/${tool._id}`, {
+        fetch(`https://shielded-sea-60001.herokuapp.com/tool/${tool._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
