@@ -9,10 +9,10 @@ import { toast } from 'react-toastify';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
-    const { email, displayName, photoURL } = user;
+    // const { email, displayName, photoURL } = user;
     const { register, reset, formState: { errors }, handleSubmit } = useForm({ mode: "onBlur" });
 
-    const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`https://shielded-sea-60001.herokuapp.com/user/${email}`, {
+    const { data: profile, isLoading, refetch } = useQuery('myprofile', () => fetch(`https://shielded-sea-60001.herokuapp.com/user/${user.email}`, {
         method: 'GET',
         headers: {
             'authoraization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MyProfile = () => {
             linkedIn: data.url,
             location: data.location
         }
-        fetch(`https://shielded-sea-60001.herokuapp.com/myprofile/${email}`, {
+        fetch(`https://shielded-sea-60001.herokuapp.com/myprofile/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -60,11 +60,11 @@ const MyProfile = () => {
                     <p className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'> Email:</span> {user?.email}</p>
                     {
                         profile.alternativeEmail && <div>
-                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile.alternativeEmail}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Education:</span>  {profile.education}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile.location}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg '>  <span className='font-bold'>LinkedIn Profile:</span> {profile.linkedIn}</h3>
-                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Mobile Number: </span> {profile.phone}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Alternative Email:</span>  {profile?.alternativeEmail}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Education:</span>  {profile?.education}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Address:</span>  {profile?.location}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg '>  <span className='font-bold'>LinkedIn Profile:</span> {profile?.linkedIn}</h3>
+                            <h3 className='border-2 my-2 p-2 rounded-lg'> <span className='font-bold'>Mobile Number: </span> {profile?.phone}</h3>
                         </div>
                     }
                 </div>

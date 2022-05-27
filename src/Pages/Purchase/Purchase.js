@@ -9,9 +9,7 @@ import Loading from '../Shared/Loading/Loading';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
-    const { displayName, email } = user;
     const { id } = useParams();
-    // const { processing, setProcessing } = useState(false);
     const { register, formState: { errors }, getValues, watch, handleSubmit, reset } = useForm({ mode: "onBlur" });
 
 
@@ -31,7 +29,7 @@ const Purchase = () => {
         const totalPrice = parseInt(data.quantity) * parseInt(tool.unitPrice);
         const order = {
             productName: tool.name,
-            email: email,
+            email: user?.email,
             quantity: data.quantity,
             totalPrice: totalPrice,
             address: data.address
@@ -97,13 +95,13 @@ const Purchase = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input className="input input-bordered font-bold border" value={displayName} disabled />
+                                <input className="input input-bordered font-bold border" value={user?.displayName} disabled />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input className="input input-bordered font-bold" value={email} disabled />
+                                <input className="input input-bordered font-bold" value={user?.email} disabled />
                             </div>
                             <div className="form-control ">
                                 <label className="label">

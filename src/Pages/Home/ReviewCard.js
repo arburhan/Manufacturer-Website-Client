@@ -4,7 +4,6 @@ import auth from '../../firebase.init';
 import Image from '../../Images/Image.jpg';
 
 const ReviewCard = ({ review, refetch }) => {
-    const [user] = useAuthState(auth);
     const { name, description, rating, image } = review;
     return (
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl">
