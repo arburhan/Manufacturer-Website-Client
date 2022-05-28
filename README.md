@@ -1,6 +1,6 @@
-# [AR Tools Industries](https://github.com/facebook/create-react-app)
+# [AR Tools Industries](https://ar-power-tools.web.app/)
 
-## Live link [https://inventory-management-7b51a.web.app/]
+## Live link [https://ar-power-tools.web.app/]
 ## Server side code[https://github.com/programming-hero-web-course1/manufacturer-website-server-side-arburhan]
 
 ## Description 

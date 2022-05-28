@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -78,7 +78,7 @@ const MyProfile = () => {
                             </label>
                             <input
                                 type="name"
-                                placeholder="Product Name"
+                                placeholder="Your Name"
                                 className="input input-bordered w-full max-w-xs"
                                 {...register("name", {
                                     required: {
