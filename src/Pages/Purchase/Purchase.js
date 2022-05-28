@@ -129,7 +129,7 @@ const Purchase = () => {
                                 <input type="address" className="input input-bordered font-bold bg-white" placeholder='Exact locatoin' {...register("address", {
                                     required: {
                                         value: true,
-                                        message: 'Address Number is Required'
+                                        message: 'Address Line is Required'
                                     }
                                 })} />
                                 <label className="label">

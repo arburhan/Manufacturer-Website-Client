@@ -158,17 +158,17 @@ const AddProduct = () => {
                                     message: 'Description is Required'
                                 },
                                 maxLength: {
-                                    value: 800,
+                                    value: 900,
                                     message: 'Cannot be greater than 255 charecter'
                                 }
-                            })} className="textarea textarea-bordered h-24" placeholder="Details about your review"></textarea>
+                            })} className="textarea textarea-bordered h-24" placeholder="Details about your Product"></textarea>
                             <label className="label">
                                 {errors?.description?.type === 'required' && <span className="label-text-alt text-red-500">{errors?.description.message}</span>}
                                 {errors?.description?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors?.description.message}</span>}
                             </label>
                         </div>
                         <div className='text-center'>
-                            <input className='btn btn-accent btn-wide' type="submit" value="Add Review" />
+                            <input className='btn btn-accent btn-wide' type="submit" value="Add Product" />
                         </div>
                     </form>
                 </div>
