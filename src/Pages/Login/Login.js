@@ -82,17 +82,18 @@ const Login = () => {
                                 })}
                             />
                             <label className="label">
-                                <button onClick={() => {
-                                    navigate('/forgetPassword');
-                                }} className="label-text-alt text-primary pt-2">Forget Password?</button>
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
-
                         {errorMessage}
                         {loading ? <button className="btn loading w-full max-w-xs">loading</button> : <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />}
                     </form>
+                    <label className="label">
+                        <button onClick={() => {
+                            navigate('/forgetPassword');
+                        }} className="label-text-alt text-primary pt-2">Forget Password?</button>
+                    </label>
                     <p><small>New to Power Tools? <Link className='text-accent' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
                     {googleLoading ? <button className="btn loading">loading</button> : <button
