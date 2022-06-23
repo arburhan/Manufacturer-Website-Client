@@ -24,8 +24,8 @@ There are also many more features. So visit now to see what's late.
 ## Website Technologies
 - HTML
 - CSS
+- Tailwind
 - React.js
-- React Bootstrap
 - React Router
 - React Firebase Hooks
 - React Toast
